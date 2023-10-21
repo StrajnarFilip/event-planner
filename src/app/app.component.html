@@ -1,0 +1,17 @@
+<mat-toolbar>
+  <span>Dogodki</span>
+  <span class="spacer"></span>
+  <button mat-stroked-button routerLink="/search-events">
+    <mat-icon>search</mat-icon>
+    Vsi dogodki
+  </button>
+  <span class="spacer"></span>
+  <button mat-stroked-button routerLink="/new-event">
+    <mat-icon>add</mat-icon>
+    Dodaj dogodek
+  </button>
+</mat-toolbar>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

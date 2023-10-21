@@ -1,0 +1,21 @@
+<p>
+  <mat-form-field>
+    <mat-label>Ime dogodka</mat-label>
+    <input matInput type="text" [(ngModel)]="eventName" />
+  </mat-form-field>
+</p>
+<p>
+  <mat-form-field>
+    <mat-label>Začetek dogodka</mat-label>
+    <input matInput type="datetime-local" [(ngModel)]="eventBeginsAt" />
+  </mat-form-field>
+</p>
+<p>
+  <mat-form-field class="large-field">
+    <mat-label>Dodatne informacije</mat-label>
+    <textarea [(ngModel)]="extraInformation" [rows]="15" matInput></textarea>
+  </mat-form-field>
+</p>
+<p>
+  <button mat-raised-button (click)="createEvent()">Ustvari dogodek</button>
+</p>
