@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'event/:id', component: EventComponent },
   { path: 'new-event', component: NewEventComponent },
   { path: 'search-events', component: SearchEventsComponent },
+  { path: '**', redirectTo: '/search-events' },
 ];
 
 @NgModule({
