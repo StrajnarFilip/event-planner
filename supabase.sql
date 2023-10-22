@@ -10,14 +10,14 @@ create table
     published_at timestamp with time zone default now(),
     begins_at timestamp not null,
     extra_information text,
-    name varchar(100)
+    name varchar(100) not null
   );
 
 create table
   event_participant (
     id bigserial primary key,
     event_id bigint references event (id),
-    name varchar(100) unique,
+    name varchar(100) not null,
     joined_at timestamp with time zone default now()
   );
 
