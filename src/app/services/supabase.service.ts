@@ -69,6 +69,6 @@ export class SupabaseService {
   }
 
   allEvents() {
-    return this.supabase.from('event').select();
+    return this.supabase.from('event').select('*, event_participant(count)');
   }
 }

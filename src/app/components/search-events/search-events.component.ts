@@ -8,11 +8,18 @@ import { SupabaseService } from 'src/app/services/supabase.service';
 })
 export class SearchEventsComponent implements OnInit {
   events?: any[];
-  displayedColumns = ['name', 'published_at', 'begins_at'];
+  displayedColumns = ['name', 'published_at', 'begins_at', 'participant_count'];
 
   constructor(private supabase: SupabaseService) {}
 
   ngOnInit(): void {
+    this.updateTable();
+    this.supabase.listenForChanges((payload) => {
+      this.updateTable();
+    });
+  }
+
+  updateTable() {
     this.supabase.allEvents().then((response) => {
       console.log(response);
       if (response.data !== null) {

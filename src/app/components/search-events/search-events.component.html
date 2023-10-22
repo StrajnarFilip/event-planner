@@ -21,6 +21,14 @@
         {{ element.begins_at | date: "dd.MM.YYYY 'ob' HH:mm" }}
       </td>
     </ng-container>
+
+    <ng-container matColumnDef="participant_count">
+      <th mat-header-cell *matHeaderCellDef>Trenutno prijavljenih</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.event_participant[0].count }}
+      </td>
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr
       mat-row
