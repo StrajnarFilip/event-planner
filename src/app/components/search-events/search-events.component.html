@@ -8,13 +8,17 @@
         Začetek dogodka:
         {{ event.begins_at | date : "dd.MM.YYYY 'ob' HH:mm:ss" }}
       </p>
-      <p>Trenutno prijavljenih: {{ event.event_participant.length }}</p>
+      <p>Trenutno prijavljenih: {{ event.event_participant[0].count }}</p>
       <p>
         Objavljeno: {{ event.published_at | date : "dd.MM.YYYY 'ob' HH:mm:ss" }}
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button [routerLink]="'/event/' + event.id" color="primary">
+      <button
+        mat-raised-button
+        [routerLink]="'/event/' + event.id"
+        color="primary"
+      >
         Več o dogodku
       </button>
     </mat-card-actions>
