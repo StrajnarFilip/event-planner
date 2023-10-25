@@ -1,39 +1,22 @@
-<div>
-  <table *ngIf="events" mat-table [dataSource]="events">
-    <caption>
-      Vsi dogodki
-    </caption>
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Ime dogodka</th>
-      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="published_at">
-      <th mat-header-cell *matHeaderCellDef>Dogodek objavljen</th>
-      <td mat-cell *matCellDef="let element">
-        {{ element.published_at | date: "dd.MM.YYYY 'ob' HH:mm:ss" }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="begins_at">
-      <th mat-header-cell *matHeaderCellDef>Dogodek se začne</th>
-      <td mat-cell *matCellDef="let element">
-        {{ element.begins_at | date: "dd.MM.YYYY 'ob' HH:mm" }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="participant_count">
-      <th mat-header-cell *matHeaderCellDef>Trenutno prijavljenih</th>
-      <td mat-cell *matCellDef="let element">
-        {{ element.event_participant[0].count }}
-      </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr
-      mat-row
-      *matRowDef="let row; columns: displayedColumns"
-      [routerLink]="'/event/' + row.id"
-    ></tr>
-  </table>
+<div *ngIf="events" class="responsive">
+  <mat-card *ngFor="let event of events" [routerLink]="'/event/' + event.id">
+    <mat-card-header>
+      <mat-card-title>{{ event.name }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        Začetek dogodka:
+        {{ event.begins_at | date : "dd.MM.YYYY 'ob' HH:mm:ss" }}
+      </p>
+      <p>Trenutno prijavljenih: {{ event.event_participant.length }}</p>
+      <p>
+        Objavljeno: {{ event.published_at | date : "dd.MM.YYYY 'ob' HH:mm:ss" }}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button [routerLink]="'/event/' + event.id" color="primary">
+        Več o dogodku
+      </button>
+    </mat-card-actions>
+  </mat-card>
 </div>

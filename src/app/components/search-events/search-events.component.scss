@@ -2,3 +2,13 @@
   background-color: gray;
   cursor: pointer;
 }
+
+.responsive {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+mat-card {
+  margin: 1em;
+}
